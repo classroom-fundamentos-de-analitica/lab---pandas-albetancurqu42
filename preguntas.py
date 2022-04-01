@@ -130,7 +130,7 @@ def pregunta_08():
     """
 
     tbl0_sum = tbl0.copy()
-    tbl0_sum['sum'] = tbl0_sum['_c0'] + tbl0_sum['_c2']
+    tbl0_sum['suma'] = tbl0_sum['_c0'] + tbl0_sum['_c2']
 
     return tbl0_sum
 
@@ -169,7 +169,9 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    return
+    tbl0_v2 = tbl0.copy()
+    tbl0_v2['_c2'] = tbl0_v2['_c2'].astype(str)
+    return tbl0_v2.sort_values(by=['_c2']).groupby('_c1')['_c2'].apply(lambda x: ':'.join(x)).reset_index()
 
 
 def pregunta_11():
