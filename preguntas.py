@@ -171,7 +171,9 @@ def pregunta_10():
     """
     tbl0_v2 = tbl0.copy()
     tbl0_v2['_c2'] = tbl0_v2['_c2'].astype(str)
-    return tbl0_v2.sort_values(by=['_c2']).groupby('_c1')['_c2'].apply(lambda x: ':'.join(x)).reset_index()
+    result = tbl0_v2.sort_values(by=['_c2']).groupby('_c1')['_c2'].apply(lambda x: ':'.join(x)).reset_index()
+    result.columns = ['_c0', '_c1']
+    return result
 
 
 def pregunta_11():
