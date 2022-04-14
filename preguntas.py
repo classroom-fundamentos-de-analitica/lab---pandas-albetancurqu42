@@ -231,4 +231,7 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    return
+    tbl0_13 = tbl0.copy().loc[:, ['_c0', '_c1']].set_index('_c0')
+    tbl2_13 = tbl2.copy().loc[:, ['_c0', '_c5b']].set_index('_c0')
+
+    return pd.concat([tbl0_13, tbl2_13], axis=1).groupby('_c1').sum().squeeze()
